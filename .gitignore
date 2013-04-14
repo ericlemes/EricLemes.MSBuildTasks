@@ -1,0 +1,11 @@
+/src/TestResults
+/src/*.suo
+/src/*.testsettings
+/src/*.vsmdi
+/src/*.testsettings
+/src/EricLemes.MSBuildTasks/obj
+/src/EricLemes.MSBuildTasks/bin
+/src/EricLemes.MSBuildTasks.Tests/bin
+/src/EricLemes.MSBuildTasks.Tests/obj
+/src/EricLemes.MSBuildTasks.Tests/*.user
+/TestResults

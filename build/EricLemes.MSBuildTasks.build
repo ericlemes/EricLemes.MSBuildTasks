@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<MSTestPath>"$(VS100COMNTOOLS)..\IDE\MSTest.exe"</MSTestPath>
+		<BinariesOutputDir>$(MSBuildProjectDirectory)\..\src\EricLemes.MSBuildTasks\bin\Debug</BinariesOutputDir>		
+	</PropertyGroup>
+	
+	<ItemGroup>	   
+	   <AllFiles Include="..\src\**\*.*" />
+	   <AllProjects Include="..\src\**\*.csproj" />
+	</ItemGroup>
+		
+	<UsingTask TaskName="DumpTaskItem" AssemblyFile="$(BinariesOUtputDir)\EricLemes.MSBuildTasks.dll" />
+	<UsingTask TaskName="CountFilesByExtension" AssemblyFile="$(BinariesOUtputDir)\EricLemes.MSBuildTasks.dll" />
+	<UsingTask TaskName="CountProjectsByProjectType" AssemblyFile="$(BinariesOUtputDir)\EricLemes.MSBuildTasks.dll" />
+	
+	<Target Name="build">
+		<MSBuild Projects="$(MSBuildProjectDirectory)\..\src\EricLemes.MSBuildTasks.sln" />
+	</Target>	
+	
+	<Target Name="test" DependsOnTargets="build">		
+		<Exec Command="$(MSTestPath) /testcontainer:$(MSBuildProjectDirectory)\..\src\EricLemes.MSBuildTasks.Tests\bin\Debug\EricLemes.MSBuildTasks.Tests.dll" WorkingDirectory="$(MSBuildProjectDirectory)\..\"  />  		
+	</Target>	
+	
+	<Target Name="demo" DependsOnTargets="test">
+		<DumpTaskItem InputFiles="@(AllFiles)" />
+		<CountFilesByExtension InputFiles="@(AllFiles)" />
+		<CountProjectsByProjectType InputFiles="@(AllProjects)" />
+	</Target>
+
+</Project>
+
