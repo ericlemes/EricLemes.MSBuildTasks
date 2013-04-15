@@ -6,13 +6,18 @@
 	</PropertyGroup>
 	
 	<ItemGroup>	   
-	   <AllFiles Include="..\src\**\*.*" />
-	   <AllProjects Include="..\src\**\*.csproj" />
+		<AllFiles Include="..\src\**\*.*" />
+		<AllProjects Include="..\src\**\*.csproj" />
+		<AllAssemblies 
+			Include="..\src\**\*.dll" 
+			Exclude="..\src\**\FluentCodeMetrics.Core.dll;..\src\**\Mono.Cecil.dll" 
+			/>	 
 	</ItemGroup>
 		
-	<UsingTask TaskName="DumpTaskItem" AssemblyFile="$(BinariesOUtputDir)\EricLemes.MSBuildTasks.dll" />
-	<UsingTask TaskName="CountFilesByExtension" AssemblyFile="$(BinariesOUtputDir)\EricLemes.MSBuildTasks.dll" />
-	<UsingTask TaskName="CountProjectsByProjectType" AssemblyFile="$(BinariesOUtputDir)\EricLemes.MSBuildTasks.dll" />
+	<UsingTask TaskName="DumpTaskItem" AssemblyFile="$(BinariesOutputDir)\EricLemes.MSBuildTasks.dll" />
+	<UsingTask TaskName="CountFilesByExtension" AssemblyFile="$(BinariesOutputDir)\EricLemes.MSBuildTasks.dll" />
+	<UsingTask TaskName="CountProjectsByProjectType" AssemblyFile="$(BinariesOutputDir)\EricLemes.MSBuildTasks.dll" />
+	<UsingTask TaskName="ComputeCyclomaticComplexity" AssemblyFile="$(BinariesOutputDir)\EricLemes.MSBuildTasks.dll" />
 	
 	<Target Name="build">
 		<MSBuild Projects="$(MSBuildProjectDirectory)\..\src\EricLemes.MSBuildTasks.sln" />
@@ -22,10 +27,10 @@
 		<Exec Command="$(MSTestPath) /testcontainer:$(MSBuildProjectDirectory)\..\src\EricLemes.MSBuildTasks.Tests\bin\Debug\EricLemes.MSBuildTasks.Tests.dll" WorkingDirectory="$(MSBuildProjectDirectory)\..\"  />  		
 	</Target>	
 	
-	<Target Name="demo" DependsOnTargets="test">
-		<DumpTaskItem InputFiles="@(AllFiles)" />
+	<Target Name="demo" DependsOnTargets="build">		
 		<CountFilesByExtension InputFiles="@(AllFiles)" />
 		<CountProjectsByProjectType InputFiles="@(AllProjects)" />
+		<ComputeCyclomaticComplexity InputFiles="@(AllAssemblies)" />
 	</Target>
 
 </Project>

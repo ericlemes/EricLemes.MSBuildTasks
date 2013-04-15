@@ -9,3 +9,6 @@
 /src/EricLemes.MSBuildTasks.Tests/obj
 /src/EricLemes.MSBuildTasks.Tests/*.user
 /TestResults
+/src/EricLemes.MSBuildTasks.Tests.DummyAssembly/obj
+/src/EricLemes.MSBuildTasks.Tests.DummyAssembly/bin
+/src/EricLemes.MSBuildTasks/*.user

@@ -48,6 +48,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComputeCyclomaticComplexityTests.cs" />
     <Compile Include="CountFilesByExtensionTests.cs" />
     <Compile Include="CountProjectByProjectTypeTests.cs" />
     <Compile Include="Mock\BuildEngineMock.cs" />
@@ -62,6 +63,10 @@
     <EmbeddedResource Include="Resources\TestResources.resx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EricLemes.MSBuildTasks.Tests.DummyAssembly\EricLemes.MSBuildTasks.Tests.DummyAssembly.csproj">
+      <Project>{7193D31A-9D56-4DC8-96D4-BC0DD4E849C1}</Project>
+      <Name>EricLemes.MSBuildTasks.Tests.DummyAssembly</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EricLemes.MSBuildTasks\EricLemes.MSBuildTasks.csproj">
       <Project>{F66B4E0F-6CFC-47B2-A329-50F97564B80C}</Project>
       <Name>EricLemes.MSBuildTasks</Name>

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F66B4E0F-6CFC-47B2-A329-50F97564B80C}</ProjectGuid>
+    <ProjectGuid>{7193D31A-9D56-4DC8-96D4-BC0DD4E849C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EricLemes.MSBuildTasks</RootNamespace>
-    <AssemblyName>EricLemes.MSBuildTasks</AssemblyName>
+    <RootNamespace>EricLemes.MSBuildTasks.Tests.DummyAssembly</RootNamespace>
+    <AssemblyName>EricLemes.MSBuildTasks.Tests.DummyAssembly</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,11 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentCodeMetrics.Core">
-      <HintPath>..\..\lib\FluentCodeMetrics.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,10 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComputeCyclomaticComplexity.cs" />
-    <Compile Include="CountFilesByExtension.cs" />
-    <Compile Include="CountProjectsByProjectType.cs" />
-    <Compile Include="DumpTaskItem.cs" />
+    <Compile Include="DummyClass.cs" />
+    <Compile Include="DummyClass2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
