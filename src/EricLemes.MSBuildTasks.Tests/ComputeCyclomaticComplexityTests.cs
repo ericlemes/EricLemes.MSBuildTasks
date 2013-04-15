@@ -35,21 +35,15 @@ namespace EricLemes.MSBuildTasks.Tests
 			computeCC.BuildEngine = _buildEngine;
 			computeCC.InputFiles = _taskItems;
 			computeCC.Execute();
-			Assert.AreEqual(1, computeCC.Output.Count);
-			Assert.AreEqual("EricLemes.MSBuildTasks.Tests.DummyAssembly.dll", computeCC.Output[0].Assembly.ManifestModule.Name);
-			Assert.AreEqual(2, computeCC.Output[0].Types.Count);
-			Assert.AreEqual("DummyClass", computeCC.Output[0].Types[0].Type.Name);
-			Assert.AreEqual(2, computeCC.Output[0].Types[0].Methods.Count);
-			Assert.AreEqual("SimpleMethod", computeCC.Output[0].Types[0].Methods[0].MethodInfo.Name);
-			Assert.AreEqual(1, computeCC.Output[0].Types[0].Methods[0].CyclomaticComplexity);
-			Assert.AreEqual("SimpleMethod2", computeCC.Output[0].Types[0].Methods[1].MethodInfo.Name);
-			Assert.AreEqual(2, computeCC.Output[0].Types[0].Methods[1].CyclomaticComplexity);
-			Assert.AreEqual("DummyClass2", computeCC.Output[0].Types[1].Type.Name);
-			Assert.AreEqual(2, computeCC.Output[0].Types[1].Methods.Count);
-			Assert.AreEqual("Test", computeCC.Output[0].Types[1].Methods[0].MethodInfo.Name);
-			Assert.AreEqual(1, computeCC.Output[0].Types[1].Methods[0].CyclomaticComplexity);
-			Assert.AreEqual("PrivateMethod", computeCC.Output[0].Types[1].Methods[1].MethodInfo.Name);
-			Assert.AreEqual(1, computeCC.Output[0].Types[1].Methods[1].CyclomaticComplexity);
+			Assert.AreEqual(4, computeCC.Output.Count);									
+			Assert.AreEqual("SimpleMethod", computeCC.Output[0].MethodInfo.Name);
+			Assert.AreEqual(1, computeCC.Output[0].CyclomaticComplexity);
+			Assert.AreEqual("SimpleMethod2", computeCC.Output[1].MethodInfo.Name);
+			Assert.AreEqual(2, computeCC.Output[1].CyclomaticComplexity);			
+			Assert.AreEqual("Test", computeCC.Output[2].MethodInfo.Name);
+			Assert.AreEqual(1, computeCC.Output[2].CyclomaticComplexity);
+			Assert.AreEqual("PrivateMethod", computeCC.Output[3].MethodInfo.Name);
+			Assert.AreEqual(1, computeCC.Output[3].CyclomaticComplexity);
 		}
 	}
 }
